@@ -5,10 +5,10 @@ $('#search').on("submit", function(i){
 	writeData(title)
 });
 
-$('body').on('click','play','.song img',function(){
+$('body').on('click','button','.song img',function(){
 	var id = $(this).parent().data('id');
 	console.log(id);
-	$('audio').attr('src','http://api.soundcloud.com/tracks/${id}/stream?client_id=03e4633e2d85874a921380e47cac705d')
+	$('audio').attr('src',`http://api.soundcloud.com/tracks/${id}/stream?client_id=03e4633e2d85874a921380e47cac705d`)
 })
 
 function writeData(title){
@@ -26,11 +26,13 @@ function writeData(title){
 				}
 
 				$('#musicHere').append(`
-					<div data-id=${"song.id"} class="col-md-3 songInfo">
+					<div data-id=${song.id} class="col-md-3 songs">
 						<img src=${song.artwork_url}
-						<h3>${song.title}</h3>
-						<h3>${song.user.username}</h3>
-						<button>Play</button>
+						<div class="songInfo">
+							<h3>${song.title}</h3>
+							<h3>${song.user.username}</h3>
+							<button>Play</button>
+						</div>
 					</div>
 				`)
 			})
