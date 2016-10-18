@@ -5,7 +5,7 @@ $('#search').on("submit", function(i){
 	writeData(title)
 });
 
-$('body').on('click','play',function(){
+$('body').on('click','play','.song img',function(){
 	var id = $(this).parent().data('id');
 	console.log(id);
 	$('audio').attr('src','http://api.soundcloud.com/tracks/${id}/stream?client_id=03e4633e2d85874a921380e47cac705d')
@@ -17,10 +17,12 @@ function writeData(title){
 		success: function(result){
 			console.log(result);
 
+			$('#musicHere').empty();
+
 			result.forEach(function(song){
 
 				if(song.artwork_url == null){
-					song.artwork_url = "http://orig01.deviantart.net/26aa/f/2011/185/f/9/no_cover_itunes_by_stainless2-d3kxnbe.png/300/300";
+					song.artwork_url = "http://truenorthinc.com/wp-content/uploads/2013/05/album_art_09.jpg";
 				}
 
 				$('#musicHere').append(`
